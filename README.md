@@ -7,6 +7,9 @@ Encrypts using XOR encryption with randomized keys and obfuscated variable names
 ### After
 ![after](https://github.com/5Noxi/XOR-Cipher/blob/main/After.png?raw=true)
 
+## Discord Server 
+- https://discord.gg/E2ybG4j9jU
+
 ## How it works  
 1. Reads input 
 2. Encrypts each line with dynamic XOR keys and converts characters to obfuscated hex
