@@ -10,6 +10,9 @@ Encrypts using XOR encryption with randomized keys and obfuscated variable names
 ## Discord Server 
 - https://discord.gg/E2ybG4j9jU
 
+## READ
+**Don't be a kiddo**, I uploaded the script *open source and for free*, stealing it now would be **unbelievable** ;D *(sad)*
+
 ## How it works  
 1. Reads input 
 2. Encrypts each line with dynamic XOR keys and converts characters to obfuscated hex
