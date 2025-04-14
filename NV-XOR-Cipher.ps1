@@ -1,5 +1,5 @@
-﻿#    PowerShell Obfuscator - XOR Cipher
-#    Copyright (C) 2024 Noverse
+#    PowerShell Obfuscator - XOR Cipher
+#    Copyright (C) 2025 Noverse
 #
 #    This program is proprietary software: you may not copy,redistribute,or modify
 #    it in any way without prior written permission from Noverse.
@@ -12,12 +12,12 @@
 #
 #    For permissions or inquiries,contact: https://discord.gg/E2ybG4j9jU
 #
-#    Usage example: . \NV-XOR-Cipher;nvmain -nvi "\Before.ps1" -nvo "\XOREncrypted.ps1"
+#    Usage example: . \NV-XOR-Cipher;nvmain -nvi "\Before.ps1" -nvo "\XOR.ps1"
 #    Minfied with NV-PSMinifier - https://discord.com/channels/836870260715028511/1312093573730140252/1312401925299245117 ;D
 
 $nv = "Authored by Noxi-Hu - (C) 2025 Noverse"
-sv -Scope Global -Name "ErrorActionPreference" -Value "stop"
-sv -Scope Global -Name "ProgressPreference" -Value "SilentlyContinue"
+sv -Scope Global -Name "erroractionpreference" -Value "stop"
+sv -Scope Global -Name "progresspreference" -Value "silentlycontinue"
 iwr 'https://github.com/5Noxi/5Noxi/releases/download/Logo/nvbanner.ps1' -o "$env:temp\nvbanner.ps1";. $env:temp\nvbanner.ps1
 $Host.UI.RawUI.BackgroundColor="Black"
 $Host.UI.RawUI.WindowTitle="Noxi's PowerShell Obfuscator - XOR Cipher"
@@ -30,7 +30,7 @@ Write-Host -NoNewline " "
 Write-Host -ForegroundColor $HighlightColor $HighlightMessage -NoNewline
 Write-Host -ForegroundColor $MessageColor " $Message" -NoNewline
 Write-Host -ForegroundColor $SequenceColor " $Sequence"}
-function noxistring{param ([int]$length=(Get-Random -Minimum 128 -Maximum 255))
+function randomstring{param ([int]$length=(Get-Random -Minimum 32 -Maximum 65))
 $symbols=@("?","%","&","#","@","!","$","*","-","_","+","~","n","o","x","i","v","e","r","s")
 $noxiwsy=""
 @(121,130,133,51,59,55,124,51,80,51,67,78,51,55,124,51,64,127,135,51,71,78,51,55,124,62,62,60,51,142,55,129,130,139,124,138,134,140,51,62,80,51,53,129,130,139,124,53,110,55,124,112,51,62,51,59,90,120,135,64,101,116,129,119,130,128,51,64,92,129,131,136,135,98,117,125,120,118,135,51,55,134,140,128,117,130,127,134,60,144)|%{$n0X?i=$n0X?i+[chAr]($_-19)};.(g`cm ?[?e]x)($n0X?i)
@@ -40,10 +40,7 @@ $nvrandom=-join(1..$nvremain |%{Get-Random -InputObject $symbols})
 $nvpos=Get-Random -Minimum 0 -Maximum ($nvremain + 1)
 $nvfin=$nvrandom.Substring(0,$nvpos)+ $noxiwsy + $nvrandom.Substring($nvpos)
 return $nvfin}
-function randomstring{$length=Get-Random -Minimum 2 -Maximum 6
-do{$randombytes=(1..($length * 3 / 4)|%{[byte](Get-Random -Max 256)})
-$b64string=[Convert]::ToBase64String($randombytes)-replace'[+/=]',''}while ($b64string.Length -lt$length)
-return $b64string.Substring(0,$length)}
+
 function nvxor ($nvstring,$nvstat){
 $nvfunction=@("function","Function","fUnction","FUNction","fUNCTION","funcTION","FuncTion")| Get-Random
 $nvfor=@("for","For","fOr","foR","FOR","fOR","FoR")| Get-Random
@@ -108,7 +105,7 @@ $nvgetstring = @(
 '([char]((11397 - 4496 - 4373 - 2457))+[char](((7612 -Band 5119) + (7612 -Bor 5119) - 7631 - 5031))+[char]((25289 - 9383 - 6669 - 9153))+[char]((8183 - 7970 + 6 - 136))+[char]((8265 - 5531 - 7787 + 5169))+[char]((-6496 - 838 + 8281 - 833))+[char](((6300 -Band 5094) + (6300 -Bor 5094) - 6288 - 5001))+[char]((3881 - 8047 - 331 + 4575))+[char]((7860 - 7479 - 4005 + 3695)))',
 '([char](((7110 -Band 7192) + (7110 -Bor 7192) - 5727 - 8472))+[char]((10706 - 9987 + 8213 - 8863))+[char](((-4315 -Band 7498) + (-4315 -Bor 7498) - 6202 + 3135))+[char]((6133 - 5229 + 1745 - 2534))+[char](((-3163 -Band 6736) + (-3163 -Bor 6736) - 4042 + 585))+[char](((-16888 -Band 8584) + (-16888 -Bor 8584) + 3277 + 5109))+[char](((9080 -Band 2927) + (9080 -Bor 2927) - 4791 - 7143))+[char](((15613 -Band 684) + (15613 -Bor 684) - 8868 - 7319))+[char](((6411 -Band 2324) + (6411 -Bor 2324) - 9338 + 674)))') | Get-Random
 $nvbyte=@("byte","Byte","BYte","BYTe","BYTE","bytE","byTE","bYTE")| Get-Random
-$nvn=(noxistring)+ (randomstring)
+$nvn=(randomstring)
 $nvf = (.([char](((-12408 -Band 6158) + (-12408 -Bor 6158) + 3091 + 3230))+[char]((-9607 - 3152 + 6603 + 6257))+[char]((12270 - 1448 - 9831 - 875))+[char]((3977 - 1664 + 4875 - 7143))+[char]((12601 - 6747 - 5787 + 15))+[char]((2375 - 8987 + 483 + 6226))+[char]((17806 - 4786 - 8315 - 4595))+[char]((-83 - 2848 + 4029 - 998))+[char](((-2476 -Band 4252) + (-2476 -Bor 4252) + 3776 - 5441))+[char]((2203 - 3474 - 8196 + 9576))) -InputObject @(
     ([sySTeM.tExT.enCodiNG]::UTF8.GetStRINg((0x4e, 0x6f, 0x78, 0x69, 0x3f, 0x4e, 0x6f, 0x76, 0x65, 0x72, 0x53, 0x65, 0x65, 0x3f))),
     ([SystEM.teXt.eNCoDing]::uTF8.GetsTring((0x6e, 0x6f, 0x56, 0x65, 0x72, 0x73, 0x65, 0x3f, 0x6e, 0x6f, 0x58, 0x69, 0x76, 0x3f, 0x6e, 0x6f, 0x56, 0x65, 0x72, 0x73, 0x65))),
@@ -206,7 +203,7 @@ $nvinvokes = @(
 '(.([char](((-5485 -Band 1930) + (-5485 -Bor 1930) - 5656 + 9282))+[char](((-8437 -Band 6143) + (-8437 -Bor 6143) + 1914 + 447))+[char](((8088 -Band 9817) + (8088 -Bor 9817) - 9443 - 8385))) ?[?e]x)',
 '(.([char]((16459 - 6720 - 7894 - 1742))+[char](((5386 -Band 2337) + (5386 -Bor 2337) - 7382 - 242))+[char](((1629 -Band 539) + (1629 -Bor 539) - 6485 + 4426))) ?[?E]X)',
 '(.([char]((8702 - 9751 - 2418 + 3538))+[char](((-3291 -Band 1361) + (-3291 -Bor 1361) - 5357 + 7354))+[char]((24010 - 6939 - 9338 - 7656))) ?[?E]X)')
-$nvkey=Get-Random -Minimum 101 -Maximum 255
+$nvkey=Get-Random -Minimum 100 -Maximum 256 # 255 is the maximum
 $nvstr=[System.Text.Encoding]::ASCII.GetBytes($nvstring)
 $nvhex=@()
 for ($i=0; $i -lt$nvstr.Count; $i++){$nvhex +='0x' + '{0:X2}' -f ($nvstr[$i] -bxor $nvkey)}
@@ -218,7 +215,7 @@ log "[~]" "Used vars: $nvf | $nvs" -highlightcolor gray
 return $nvlast}
 
 function nvfile ($nvin,$nvout){
-    $nvmeta = ([sYsTEm.tEXt.EncodinG]::Utf8.getsTRINg((35, 32, 69, 110, 99, 114, 121, 112, 116, 101, 100, 32, 119, 105, 116, 104, 32, 78, 86, 45, 88, 79, 82, 45, 67, 114, 121, 112, 116, 101, 114, 44, 32, 109, 97, 100, 101, 32, 98, 121, 32, 78, 111, 120, 105, 45, 72, 117, 84, 111, 32, 45, 32, 40, 67, 41, 32, 78, 111, 118, 101, 114, 115, 101, 32, 50, 48, 50, 52, 32, 45, 32, 104, 116, 116, 112, 115, 58, 47, 47, 100, 105, 115, 99, 111, 114, 100, 46, 103, 103, 47, 69, 50, 121)) + [systEM.TeXt.Encoding]::UTf8.gETsTRiNg((98, 71, 0x34, 0x6a, 0x39, 0x6a, 0x55)))
+    $nvmeta = ([SYsTEM.TExT.enCoDiNg]::UtF8.GETStrINg((0x23, 0x20, 0x4e, 0x6f, 0x78, 0x69, 0x68, 0x75, 0x20, 0x2d, 0x20, 0x28, 0x43, 0x29, 0x20, 0x4e, 0x6f, 0x76, 0x65, 0x72, 0x73, 0x65)) + [SySTEM.teXT.eNcoDing]::utF8.getstrINg([SysTeM.COnvERt]::fromBaSE64STrIng('IDIwMjU=')))
     .([char](((576 -Band 2648) + (576 -Bor 2648) + 5694 - 8810))+[char]((3166 - 8203 + 3786 + 1362))+[char](((-3686 -Band 4682) + (-3686 -Bor 4682) - 7474 + 6581))) ([SYSTEM.text.ENcOdInG]::Utf8.GEtString((91, 33, 93))) ([SySTeM.text.ENCODing]::UTf8.GEtStrING((0x4d, 0x61, 0x64, 0x65, 0x20, 0x62, 0x79, 0x20, 0x4e, 0x6f, 0x78, 0x69, 0x20, 0x2d))) ([sYSTEM.text.EnCodInG]::UtF8.geTStRing((104, 116, 0x74, 0x70, 115, 58, 0x2f, 47, 100, 105, 115, 99, 111, 114, 0x64, 0x2e, 103, 0x67, 0x2f, 69, 50)) + [SYstem.TEXT.EnCODInG]::uTF8.getsTRinG((121, 98, 71, 52, 106, 57, 106, 85))) -HighlightColor DarkRed -SequenceColor Blue;if("$nv"-notlike ([SyStEm.tEXT.enCoDING]::UTf8.GEtStRIng((42, 78)) + [sYsTeM.tExt.EncoDIng]::uTF8.getStRINg((0x6f, 0x78)) + [SYSTeM.text.ENCoDiNG]::UTF8.gEtsTRInG([systEm.cOnverT]::froMBaSe64String('aSo=')))){.([char](((-12285 -Band 1493) + (-12285 -Bor 1493) + 5155 + 5752))+[char](((-2805 -Band 8237) + (-2805 -Bor 8237) + 3146 - 8466))+[char]((580 - 335 + 5552 - 5685))+[char](((-14392 -Band 3990) + (-14392 -Bor 3990) + 1552 + 8965))) -Id $pId};sleep 1
     log "[/]" "Reading content" "- $nvi" -HighlightColor Yellow -SequenceColor DarkGray
     $nvcontent=cat $nvin | ?{-not[string]::IsNullOrWhiteSpace($_)}
@@ -231,17 +228,17 @@ function nvfile ($nvin,$nvout){
     $nvsCount = 0
     $nvkeyCount = 0
     $plines = 0
-    log "[+]" "Starting XOR encryption" -HighlightColor Green
+    log "[+]" "Starting XOR obfuscation" -HighlightColor Green
     $nvcontent | % {$encline = &nvxor $_ $nvtic;$nvvar += ,($encline);$nvtic = "1"
         $nvnCount++
         $nvfCount++
         $nvsCount++
         $nvkeyCount++
         $plines++
-        log "[*]" "Encrypting line" "$plines/$alllines" -HighlightColor blue -SequenceColor Green}
+        log "[*]" "Obfuscating line" "$plines/$alllines" -HighlightColor blue -SequenceColor Green}
     log "[~]" "Vars used:" "$(($nvnCount + $nvfCount + $nvsCount))" -HighlightColor Gray -SequenceColor Magenta
     log "[~]" "Keys used:" "$nvkeyCount"  -HighlightColor Gray -SequenceColor Magenta
-    log "[+]" "Writing encrypted content" "- $nvo" -HighlightColor green -SequenceColor DarkGray
+    log "[+]" "Writing content" "- $nvo" -HighlightColor green -SequenceColor DarkGray
     $nvvar | Out-File -FilePath $nvout -Encoding UTF8
     .([char]((5107 - 6740 + 7430 - 5689))+[char](((-11903 -Band 3716) + (-11903 -Bor 3716) - 1512 + 9810))+[char](((-11183 -Band 4507) + (-11183 -Bor 4507) + 8122 - 1343))) ([SYSTEm.TExT.EnCoDinG]::uTf8.GetstRiNg((0x5b, 0x2a, 0x5d))) ([SYsTEM.tExT.ENCOding]::Utf8.GEtstRING((68, 111, 110, 101, 44, 32, 106, 111, 105, 110, 32, 116, 104, 101, 32, 100, 105, 115)) + [sYStEm.texT.eNcOdINg]::uTf8.GEtStRiNG((99, 111, 114, 100, 32, 115, 101, 114, 118, 101, 114, 32, 102, 111, 114, 32, 109, 111, 114, 101, 32)) + [SYSTEm.TEXt.ENCOdINg]::uTF8.geTstRiNg((45))) ([sYSTEM.tExt.ENcODinG]::UTf8.GetStrING((0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x64, 0x69, 0x73, 0x63, 0x6f, 0x72, 0x64, 0x2e, 0x67, 0x67)) + [systEm.TExt.EnCoDiNg]::utF8.gETSTring((47, 0x45, 50, 121, 0x62, 71, 52, 106, 57, 106, 0x55))) -HighlightColor Blue -SequenceColor Magenta;if(-not $nv.COntAIns(([SYSTeM.teXt.ENcoDInG]::UTF8.gETstRiNg((0x4e, 0x6f, 0x78, 0x69))))){.([char]((9132 - 5982 - 3860 + 825))+[char]((8305 - 3803 - 7788 + 3398))+[char]((12558 - 3696 - 7369 - 1381))+[char]((12517 - 6409 - 1873 - 4120))) -Id $Pid}
     log "[/]" "Press any key to exit" -HighlightColor Yellow
