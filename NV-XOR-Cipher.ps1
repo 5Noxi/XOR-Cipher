@@ -216,31 +216,28 @@ return $nvlast}
 
 function nvfile ($nvin,$nvout){
     $nvmeta = ([SYsTEM.TExT.enCoDiNg]::UtF8.GETStrINg((0x23, 0x20, 0x4e, 0x6f, 0x78, 0x69, 0x68, 0x75, 0x20, 0x2d, 0x20, 0x28, 0x43, 0x29, 0x20, 0x4e, 0x6f, 0x76, 0x65, 0x72, 0x73, 0x65)) + [SySTEM.teXT.eNcoDing]::utF8.getstrINg([SysTeM.COnvERt]::fromBaSE64STrIng('IDIwMjU=')))
-    .([char](((576 -Band 2648) + (576 -Bor 2648) + 5694 - 8810))+[char]((3166 - 8203 + 3786 + 1362))+[char](((-3686 -Band 4682) + (-3686 -Bor 4682) - 7474 + 6581))) ([SYSTEM.text.ENcOdInG]::Utf8.GEtString((91, 33, 93))) ([SySTeM.text.ENCODing]::UTf8.GEtStrING((0x4d, 0x61, 0x64, 0x65, 0x20, 0x62, 0x79, 0x20, 0x4e, 0x6f, 0x78, 0x69, 0x20, 0x2d))) ([sYSTEM.text.EnCodInG]::UtF8.geTStRing((104, 116, 0x74, 0x70, 115, 58, 0x2f, 47, 100, 105, 115, 99, 111, 114, 0x64, 0x2e, 103, 0x67, 0x2f, 69, 50)) + [SYstem.TEXT.EnCODInG]::uTF8.getsTRinG((121, 98, 71, 52, 106, 57, 106, 85))) -HighlightColor DarkRed -SequenceColor Blue;if("$nv"-notlike ([SyStEm.tEXT.enCoDING]::UTf8.GEtStRIng((42, 78)) + [sYsTeM.tExt.EncoDIng]::uTF8.getStRINg((0x6f, 0x78)) + [SYSTeM.text.ENCoDiNG]::UTF8.gEtsTRInG([systEm.cOnverT]::froMBaSe64String('aSo=')))){.([char](((-12285 -Band 1493) + (-12285 -Bor 1493) + 5155 + 5752))+[char](((-2805 -Band 8237) + (-2805 -Bor 8237) + 3146 - 8466))+[char]((580 - 335 + 5552 - 5685))+[char](((-14392 -Band 3990) + (-14392 -Bor 3990) + 1552 + 8965))) -Id $pId};sleep 1
-    log "[/]" "Reading content" "- $nvi" -HighlightColor Yellow -SequenceColor DarkGray
+    log "[~]" "Reading content" "- $nvi" -HighlightColor Gray -SequenceColor DarkGray
     $nvcontent=cat $nvin | ?{-not[string]::IsNullOrWhiteSpace($_)}
     $nvvar=@($nvmeta)
     $alllines = $nvcontent.Count
-    log "[~]" "Total lines to process:" "$alllines" -HighlightColor Gray
+    log "[*]" "Total lines to process:" "$alllines" -HighlightColor Blue -SequenceColor Blue
     $nvtic="0"
     $nvnCount = 0
     $nvfCount = 0
     $nvsCount = 0
     $nvkeyCount = 0
     $plines = 0
-    log "[+]" "Starting XOR obfuscation" -HighlightColor Green
     $nvcontent | % {$encline = &nvxor $_ $nvtic;$nvvar += ,($encline);$nvtic = "1"
         $nvnCount++
         $nvfCount++
         $nvsCount++
         $nvkeyCount++
         $plines++
-        log "[*]" "Obfuscating line" "$plines/$alllines" -HighlightColor blue -SequenceColor Green}
-    log "[~]" "Vars used:" "$(($nvnCount + $nvfCount + $nvsCount))" -HighlightColor Gray -SequenceColor Magenta
-    log "[~]" "Keys used:" "$nvkeyCount"  -HighlightColor Gray -SequenceColor Magenta
-    log "[+]" "Writing content" "- $nvo" -HighlightColor green -SequenceColor DarkGray
+        log "[~]" "Obfuscating line" "$plines/$alllines" -HighlightColor Gray -SequenceColor Blue}
+    #log "[~]" "Vars used:" "$(($nvnCount + $nvfCount + $nvsCount))" -HighlightColor Gray -SequenceColor Blue
+    #log "[~]" "Keys used:" "$nvkeyCount"  -HighlightColor Gray -SequenceColor Magenta
+    log "[+]" "Output at" "- $nvo" -HighlightColor green -SequenceColor DarkGray
     $nvvar | Out-File -FilePath $nvout -Encoding UTF8
-    .([char]((5107 - 6740 + 7430 - 5689))+[char](((-11903 -Band 3716) + (-11903 -Bor 3716) - 1512 + 9810))+[char](((-11183 -Band 4507) + (-11183 -Bor 4507) + 8122 - 1343))) ([SYSTEm.TExT.EnCoDinG]::uTf8.GetstRiNg((0x5b, 0x2a, 0x5d))) ([SYsTEM.tExT.ENCOding]::Utf8.GEtstRING((68, 111, 110, 101, 44, 32, 106, 111, 105, 110, 32, 116, 104, 101, 32, 100, 105, 115)) + [sYStEm.texT.eNcOdINg]::uTf8.GEtStRiNG((99, 111, 114, 100, 32, 115, 101, 114, 118, 101, 114, 32, 102, 111, 114, 32, 109, 111, 114, 101, 32)) + [SYSTEm.TEXt.ENCOdINg]::uTF8.geTstRiNg((45))) ([sYSTEM.tExt.ENcODinG]::UTf8.GetStrING((0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x64, 0x69, 0x73, 0x63, 0x6f, 0x72, 0x64, 0x2e, 0x67, 0x67)) + [systEm.TExt.EnCoDiNg]::utF8.gETSTring((47, 0x45, 50, 121, 0x62, 71, 52, 106, 57, 106, 0x55))) -HighlightColor Blue -SequenceColor Magenta;if(-not $nv.COntAIns(([SYSTeM.teXt.ENcoDInG]::UTF8.gETstRiNg((0x4e, 0x6f, 0x78, 0x69))))){.([char]((9132 - 5982 - 3860 + 825))+[char]((8305 - 3803 - 7788 + 3398))+[char]((12558 - 3696 - 7369 - 1381))+[char]((12517 - 6409 - 1873 - 4120))) -Id $Pid}
     log "[/]" "Press any key to exit" -HighlightColor Yellow
     [System.Console]::ReadKey()> $null
     exit}
@@ -248,7 +245,7 @@ function nvfile ($nvin,$nvout){
 function nvmain{
 param ([string]$nvi,[string]$nvo)
 bannercyan
-if (-not(Test-Path -Path $nvi)){log "[-]" "Input file not found at $nvi" -HighlightColor Red
+if (-not(Test-Path -Path $nvi)){log "[-]" "Input file not found at -" "$nvi" -HighlightColor Red -SequenceColor DarkGray
 log "[/]" "Press any key to exit" -HighlightColor Yellow
 [System.Console]::ReadKey()> $null
 exit}
